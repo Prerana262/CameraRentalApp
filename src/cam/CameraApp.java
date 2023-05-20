@@ -1,680 +1,886 @@
+
 package cam;
+
+ 
 
 import java.util.ArrayList;
 
+import java.util.InputMismatchException;
+
 import java.util.List;
+
+ 
 
 import java.util.Scanner;
 
+ 
+
 class Camera {
 
-	private int cameraID;
+ 
 
-	private String camName;
+      private int cameraID;
 
-	private int model;
+ 
 
-	private int perDayPrice;
+      private String camName;
 
-	private boolean available;
+ 
 
-	public Camera(int cameraID, String camName, int model, int perDayPrice) {
+      private String model;
 
-	this.cameraID = cameraID;
+ 
 
-	this.camName = camName;
+      private int perDayPrice;
 
-	this.model = model;
+ 
 
-	this.perDayPrice = perDayPrice;
+      private boolean available;
 
-	this.available = true;
+ 
 
-	}
+      public Camera(int cameraID, String camName, String model, int perDayPrice) {
 
-	public int getCameraID() {
+ 
 
-	return cameraID;
+           this.cameraID = cameraID;
 
-	}
+ 
 
-	public boolean isAvailable() {
+           this.camName = camName;
 
-	return available;
+ 
 
-	}
+           this.model = model;
 
-	public void setAvailable(boolean available) {
+ 
 
-	this.available = available;
+           this.perDayPrice = perDayPrice;
 
-	}
+ 
 
-	public String getCameraName() {
+           this.available = true;
 
-	return camName;
+ 
 
-	}
+      }
 
-	public int getModel() {
+ 
 
-	return model;
+      public int getCameraID() {
 
-	}
+ 
 
-	public int getPerDayPrice() {
+           return cameraID;
 
-	return perDayPrice;
+ 
 
-	}
-	public void display() {
-		
-	System.out.println("CAMERA BRAND: " + getCameraName());
+      }
 
-	System.out.println("MODEL: " + getModel());
+ 
 
-	System.out.println("PER DAY PRICE (INR): " + getPerDayPrice());
+      public boolean isAvailable() {
 
-	String status = isAvailable() ? "Available" : "Rented";
+ 
 
-	System.out.println("STATUS: " + status);
+           return available;
 
-	}
+ 
+
+      }
+
+ 
+
+      public void setAvailable(boolean available) {
+
+ 
+
+           this.available = available;
+
+ 
+
+      }
+
+ 
+
+      public String getCameraName() {
+
+ 
+
+           return camName;
+
+ 
+
+      }
+
+ 
+
+      public String getModel() {
+
+ 
+
+           return model;
+
+ 
+
+      }
+
+ 
+
+      public int getPerDayPrice() {
+
+ 
+
+           return perDayPrice;
+
+ 
+
+      }
+
+ 
+
+      public void display() {
+
+ 
+
+           System.out.println("CAMERA BRAND: " + getCameraName());
+
+ 
+
+           System.out.println("MODEL: " + getModel());
+
+ 
+
+           System.out.println("PER DAY PRICE (INR): " + getPerDayPrice());
+
+ 
+
+           String status = isAvailable() ? "Available" : "Rented";
+
+           System.out.println("STATUS: " + status);
+
+ 
+
+      }
+
+ 
 
 }
+
+ 
 
 class CameraApp {
 
-	public static void main(String[] args) {
+ 
 
-	double walletBalance = 0.0;
+      public static void main(String[] args) {
 
-	int cameraID = 1;
+ 
 
-	Scanner sc = new Scanner(System.in);
+           double walletBalance = 0.0;
 
-	System.out.println("WELCOME TO CAMERA RENTAL APP\n");
+ 
 
-	System.out.println("PLEASE LOGIN TO CONTINUE -\n");
+           int cameraID = 1;
 
-	System.out.println("ENTER YOUR NAME");
+ 
 
-	String uname = sc.nextLine();
+           Scanner sc = new Scanner(System.in);
 
-	System.out.println("ENTER YOUR PASSWORD");
+ 
 
-	String psswrd = sc.nextLine();
+           System.out.println("WELCOME TO CAMERA RENTAL APP\n");
 
-	System.out.println("USERNAME - " + uname);
+ 
 
-	System.out.println("PASSWORD - " + psswrd + "\n");
+           System.out.println("PLEASE LOGIN TO CONTINUE -\n");
 
-	boolean exit = false;
+ 
 
-	int menu = 0;
+           System.out.println("ENTER YOUR NAME");
 
-	List<Camera> cameraList = new ArrayList<>();
+ 
 
-	while (!exit) {
+           String uname = sc.nextLine();
 
-	switch (menu) {
+ 
 
-	case 0:
+           System.out.println("ENTER YOUR PASSWORD");
 
-	System.out.println("1. MY CAMERA");
+ 
 
-	System.out.println("2. RENT A CAMERA");
+           String psswrd = sc.nextLine();
 
-	System.out.println("3. VIEW ALL CAMERAS");
+ 
 
-	System.out.println("4. MY WALLET");
+           System.out.println("USERNAME - " + uname);
 
-	System.out.println("5. EXIT");
+ 
 
-	int option1 = sc.nextInt();
+           System.out.println("PASSWORD - " + psswrd + "\n");
 
-	sc.nextLine();
+ 
 
-	switch (option1) {
+           boolean exit = false;
 
-	case 1:
+ 
 
-	menu = 1;
+           int menu = 0;
 
-	break;
+           try {
 
-	case 2:
+ 
 
-	System.out.println("RENT A CAMERA OTION SELECTED");
+                List<Camera> cameraList = new ArrayList<>();
 
-	System.out.println("AVAILABLE CAMERAS:");
+ 
 
+                while (!exit) {
 
-	System.out.println(
+ 
 
-	"=======================================================================================");
+                      switch (menu) {
 
-	boolean availableCamerasExist = false;
+ 
 
-	// table design reffered from internet"
+                      case 0:
 
-	System.out.printf("%-10s %-30s %-20s %-15s %-10s%n", "ID", "CAMERA NAME", "MODEL", "PERDAY RENT",
+ 
 
-	"STATUS");
+                           System.out.println("1. MY CAMERA");
 
-	System.out.println(
+ 
 
-	"========================================================================================");
+                           System.out.println("2. RENT A CAMERA");
 
+ 
 
+                           System.out.println("3. VIEW ALL CAMERAS");
 
-	for (int i = 0; i < cameraList.size(); i++) {
+ 
 
-	Camera camera = cameraList.get(i);
+                           System.out.println("4. MY WALLET");
 
-	String status = camera.isAvailable() ? "AVAILABLE" : "RENTED";
+ 
 
-	if (camera.isAvailable()) {
+                           System.out.println("5. EXIT");
 
-	System.out.printf("%-10s %-30s %-20s %-15s %-10s%n", (i + 1), camera.getCameraName(),
+ 
 
-	camera.getModel(), camera.getPerDayPrice() + " INR", status);
+                           int option1 = sc.nextInt();
 
-	availableCamerasExist = true;
+ 
 
-	}
+                           sc.nextLine();
 
-	}
+ 
 
+                           switch (option1) {
 
-	if (!availableCamerasExist) {
+ 
 
-	System.out.println("NO CAMERAS ARE AVAILABLE3 FOR4 RENT.");
+                           case 1:
 
-	} else {
+ 
 
-	System.out.println("ENTER THE CAMERA ID:");
+                                 menu = 1;
 
-	int cameraId = sc.nextInt();
+ 
 
-	sc.nextLine();
+                                 break;
 
+ 
 
-	// Check if the camera ID is valid
+                           case 2:
 
-	if (cameraId > 0 && cameraId <= cameraList.size()) {
+ 
 
-	Camera cameraToRent = cameraList.get(cameraId - 1);
+                                 System.out.println("RENT A CAMERA OTION SELECTED");
 
-	if (cameraToRent.isAvailable()) {
+                                 System.out.println("AVAILABLE CAMERAS:");
 
-	double perDayRent = cameraToRent.getPerDayPrice();
+ 
 
-	if (walletBalance >= perDayRent) {
+                                 System.out.println(
 
-	// Sufficient wallet balance, rent the camera
+                                            "=======================================================================================");
 
-	walletBalance -= perDayRent;
+ 
 
-	cameraToRent.setAvailable(false);
+                                 boolean availableCamerasExist = false;
 
-	
-	System.out.println("Your transaction for camera " + cameraToRent.getCameraName() +
-             " " + cameraToRent.getModel() + " with rent INR. " +
-             cameraToRent.getPerDayPrice() + " has successfully completed.");
+                                 // table design reffered from internet"
 
-	} else {
+                                 System.out.printf("%-10s %-30s %-20s %-15s %-10s%n", "ID", "CAMERA NAME", "MODEL", "PERDAY RENT",
 
+                                            "STATUS");
 
+ 
 
-	System.out.println("TRANSACTION FAILED DUE TO INSUFFICIENT WALLET BALANCE");
+                                 System.out.println(
 
-	}
+                                            "========================================================================================");
 
-	}
+ 
 
+                                 for (int i = 0; i < cameraList.size(); i++) {
 
+                                      Camera camera = cameraList.get(i);
 
-	} else {
+ 
 
-	System.out.println("IVALID CAMERA ID");
+                                      String status = camera.isAvailable() ? "AVAILABLE" : "RENTED";
 
-	}
+                                      if (camera.isAvailable()) {
 
-	}
+                                            System.out.printf("%-10s %-30s %-20s %-15s %-10s%n", (i + 1), camera.getCameraName(),
 
+ 
 
+                                                       camera.getModel(), camera.getPerDayPrice() + " INR", status);
 
-	break;
+                                            availableCamerasExist = true;
 
-	case 3:
+                                      }
 
+                                 }
 
+ 
 
-	System.out.println("View All Cameras option selected");
+                                 if (!availableCamerasExist) {
 
+                                      System.out.println("NO CAMERAS ARE AVAILABLE3 FOR4 RENT.");
 
+                                 } else {
 
-	System.out.println("ALL CAMERAS :");
+                                      System.out.println("ENTER THE CAMERA ID:");
 
+                                      int cameraId = sc.nextInt();
 
+                                      sc.nextLine();
 
-	System.out.println(
+ 
 
-	"===================================================================================");
+                                      // Check if the camera ID is valid
 
+                                      if (cameraId > 0 && cameraId <= cameraList.size()) {
 
-	System.out.printf("%-10s %-30s %-20s %-15s %-10s%n", "ID", "CAMERA NAME", "MODEL", "PERDAY RENT",
+                                            Camera cameraToRent = cameraList.get(cameraId - 1);
 
-	"STATUS");
+                                            if (cameraToRent.isAvailable()) {
 
+                                                 double perDayRent = cameraToRent.getPerDayPrice();
 
-	System.out.println(
+ 
 
-	"===================================================================================");
+                                                 if (walletBalance >= perDayRent) {
 
+                                                       // Sufficient wallet balance, rent the camera
 
+                                                       walletBalance -= perDayRent;
 
-	for (int i = 0; i < cameraList.size(); i++) {
+                                                       cameraToRent.setAvailable(false);
 
-	Camera camera = cameraList.get(i);
+                                                       System.out.println("CAMERA RENTED SUCESSFULLY");
 
-	String status = camera.isAvailable() ? "AVAILABLE" : "RENTED";
+                                                 } else {
 
-	System.out.printf("%-10s %-30s %-20s %-15s %-10s%n", (i + 1), camera.getCameraName(),
+ 
 
-	camera.getModel(), camera.getPerDayPrice() + " INR", status);
+                                                       System.out.println("TRANSACTION FAILED DUE TO INSUFFICIENT WALLET BALANCE");
 
-	}
+                                                 }
 
-	break;
+                                            }
 
-	case 4:
+ 
 
-	System.out.println("MY WALLET OPTION SELECTED");
+                                      } else {
 
-	System.out.println("YOUR WALLET BALANCE IS: INR " + walletBalance);
+                                            System.out.println("IVALID CAMERA ID");
 
-	System.out.println("DO YOU WANT TO DEPOSITE MORE AMOUNT TO YOUR WALLET?");
+                                      }
 
-	System.out.println("1. YES");
+                                }
 
-	System.out.println("2. NO");
+ 
 
-	int option = sc.nextInt();
+                                 break;
 
-	if (option == 1) {
+                           case 3:
 
-	System.out.println("ENTER THE AMOUNT TO BE DEPOSITED (INR):");
+ 
 
-	double depositAmount = sc.nextDouble();
+                                 System.out.println("View All Cameras option selected");
 
-	sc.nextLine();
+ 
 
-	walletBalance += depositAmount;
+                                 System.out.println("ALL CAMERAS :");
 
-	System.out.println("YOUR WALLET BALANCE HAS BEEN UPDATED SUCESSFULLY.");
+ 
 
-	System.out.println("CURRENT WALLET BALANCE: INR " + walletBalance);
+                                 System.out.println(
 
-	} else if (option == 2) {
+                                            "===================================================================================");
 
-	System.out.println("NO BALANCE IS ADDED AND THE CURRENT BALANCE IS: INR" + walletBalance);
+ 
 
-	} else {
+                                 System.out.printf("%-10s %-30s %-20s %-15s %-10s%n", "ID", "CAMERA NAME", "MODEL", "PERDAY RENT",
 
-	System.out.println("IVALID OPTION.");
+                                            "STATUS");
 
-	}
+ 
 
+                                 System.out.println(
 
-	System.out.println("ENTER THE CAMERA ID YOU WANT TO RENT:");
+                                            "===================================================================================");
 
-	int cameraId = sc.nextInt();
+ 
 
-	sc.nextLine();
+                                 for (int i = 0; i < cameraList.size(); i++) {
 
-	// Find the camera in the cameraList
+ 
 
-	Camera selectedCamera = null;
+                                      Camera camera = cameraList.get(i);
 
-	for (Camera camera : cameraList) {
+ 
 
-	if (camera.getCameraID() == cameraId) {
+                                      String status = camera.isAvailable() ? "AVAILABLE" : "RENTED";
 
-	selectedCamera = camera;
+ 
 
-	break;
+                                      System.out.printf("%-10s %-30s %-20s %-15s %-10s%n", (i + 1), camera.getCameraName(),
 
-	}
+ 
 
-	}
+                                                 camera.getModel(), camera.getPerDayPrice() + " INR", status);
 
+ 
 
+                                 }
 
-	if (selectedCamera != null) {
+ 
 
-	double perDayRent = selectedCamera.getPerDayPrice();
+                                 break;
 
+ 
 
-	if (walletBalance >= perDayRent) {
+                           case 4:
 
-	// Sufficient wallet balance, proceed with renting
+ 
 
-	walletBalance -= perDayRent;
+                                 System.out.println("MY WALLET OPTION SELECTED");
 
-	selectedCamera.setAvailable(false);
+ 
 
-	System.out.println("CAMERA RENTED SUCCESSFULLY");
+                                 System.out.println("YOUR WALLET BALANCE IS: INR " + walletBalance);
 
-	
+ 
 
-	} else {
+                                 System.out.println("DO YOU WANT TO DEPOSITE MORE AMOUNT TO YOUR WALLET?");
 
+                                 System.out.println("1. YES");
 
+                                 System.out.println("2. NO");
 
-	System.out.println("TRANSACTION FAILED DUE TO INSUFFICIENT BALANCE");
+ 
 
-	}
+                                 int option = sc.nextInt();
 
-	} else {
+ 
 
+                                 if (option == 1) {
 
+                                      System.out.println("ENTER THE AMOUNT TO BE DEPOSITED (INR):");
 
-	System.out.println("INVALID CAMERA ID");
+                                      double depositAmount = sc.nextDouble();
 
-	}
+                                      sc.nextLine();
 
+ 
 
+                                      walletBalance += depositAmount;
 
-	break;
+ 
 
+                                      System.out.println("YOUR WALLET BALANCE HAS BEEN UPDATED SUCESSFULLY.");
 
+                                      System.out.println("CURRENT WALLET BALANCE: INR " + walletBalance);
 
-	case 5:
+                                 } else if (option == 2) {
 
+                                      System.out.println("NO BALANCE IS ADDED AND THE CURRENT BALANCE IS: INR" + walletBalance);
 
+                                 } else {
 
-	exit = true;
+                                      System.out.println("IVALID OPTION.");
 
+                                 }                         
 
+ 
 
-	break;
+                                 break;
 
+ 
 
+                           case 5:
 
-	default:
+ 
 
+                                 exit = true;
 
+ 
 
-	System.out.println("INVALID OPTION");
+                                 break;
 
+ 
 
+                           default:
 
-	break;
+ 
 
+                                 System.out.println("INVALID OPTION");
 
+ 
 
-	}
+                                 break;
 
+ 
 
+                           }
 
-	break;
+ 
 
+                           break;
 
+ 
 
-	case 1:
+                      case 1:
 
+ 
 
+                           System.out.println("1. ADD");
 
-	System.out.println("1. ADD");
+ 
 
+                           System.out.println("2. REMOVE");
 
+ 
 
-	System.out.println("2. REMOVE");
+                           System.out.println("3. VIEW ALL CAMERAS");
 
+ 
 
+                           System.out.println("4. BACK TO MAIN MENU");
 
-	System.out.println("3. VIEW ALL CAMERAS");
+ 
 
+                           int option2 = sc.nextInt();
 
+ 
 
-	System.out.println("4. BACK TO MAIN MENU");
+                           sc.nextLine();
 
+ 
 
+                           switch (option2) {
 
-	int option2 = sc.nextInt();
+ 
 
+                           case 1:
 
+ 
 
-	sc.nextLine();
+                                 System.out.println("ENTER THE CAMERA NAME:");
 
+ 
 
+                                 String camName = sc.nextLine();
 
-	switch (option2) {
+ 
 
+                                 System.out.println("ENTER THE MODEL:");
 
+ 
 
-	case 1:
+                                 String model = sc.nextLine();
 
+ 
 
+                                 System.out.println("ENTER THE PER DAY PRICE (INR):");
 
-	System.out.println("ADD option selected");
+ 
 
+                                 int perDayPrice = sc.nextInt();
 
+ 
 
-	System.out.println("ENTER THE CAMERA NAME:");
+                                 sc.nextLine();
 
+ 
 
+                                 Camera cam = new Camera(cameraID++, camName, model, perDayPrice);
 
-	String camName = sc.nextLine();
+ 
 
+                                 cam.display();
 
+ 
 
-	System.out.println("ENTER THE MODEL:");
+                                 cameraList.add(cam);
 
+ 
 
+                                 System.out.println("YOUR CAMERA HAS BEEN SUCCESSFULLY ADDED TO THE LIST");
 
-	int model = sc.nextInt();
+ 
 
+                                 break;
 
+ 
 
-	System.out.println("ENTER THE PER DAY PRICE (INR):");
+                           case 2:
 
+ 
 
+                                 System.out.println(
 
-	int perDayPrice = sc.nextInt();
+                                            "===================================================================================");
 
+ 
 
+                                 System.out.printf("%-10s %-30s %-20s %-15s %-10s%n", "ID", "CAMERA NAME", "MODEL", "PERDAY RENT",
 
-	sc.nextLine();
+                                            "STATUS");
 
+ 
 
+                                 System.out.println(
 
-	Camera cam = new Camera(cameraID++, camName, model, perDayPrice);
+                                            "===================================================================================");
 
+ 
 
+                                 for (int i = 0; i < cameraList.size(); i++) {
 
-	cam.display();
+ 
 
+                                      Camera camera = cameraList.get(i);
 
+ 
 
-	cameraList.add(cam);
+                                      String status = camera.isAvailable() ? "AVAILABLE" : "RENTED";
 
+ 
 
+                                      System.out.printf("%-10s %-30s %-20s %-15s %-10s%n", (i + 1), camera.getCameraName(),
 
-	System.out.println("YOUR CAMERA HAS BEEN SUCCESSFULLY ADDED TO THE LIST");
+ 
 
+                                                 camera.getModel(), camera.getPerDayPrice() + " INR", status);
 
+ 
 
-	break;
+                                 }
 
+ 
 
+                                 System.out.println("ENTER THE CAMERA ID TO REMOVE:");
 
-	case 2:
+ 
 
+                                 int id = sc.nextInt();
 
+ 
 
-	System.out.println("REMOVE option selected");
+                                 sc.nextLine();
 
+ 
 
+                                 boolean found = false;
 
-	System.out.println("ENTER THE CAMERA ID TO REMOVE:");
+ 
 
+                                 for (Camera camera : cameraList) {
 
+ 
 
-	int id = sc.nextInt();
+                                      if (camera.getCameraID() == id) {
 
+ 
 
+                                            cameraList.remove(camera);
 
-	sc.nextLine();
+ 
 
+                                            found = true;
 
+ 
 
-	boolean found = false;
+                                            break;
 
+ 
 
+                                      }
 
-	for (Camera camera : cameraList) {
+ 
 
+                                 }
 
+ 
 
-	if (camera.getCameraID() == id) {
+                                 if (found) {
 
+ 
 
+                                      System.out.println("CAMERA DELATED SUCESSFULLY");
 
-	cameraList.remove(camera);
+ 
 
-	found = true;
+                                 } else {
 
-	break;
+ 
 
+                                      System.out.println("CAMERA NOT FOUND WITH GIVEN ID");
 
+ 
 
-	}
+                                 }
 
+ 
 
+                                 break;
 
-	}
+ 
 
+                           case 3:
 
+ 
 
-	if (found) {
+                                 System.out.println("ALL CAMERAS :");
 
+ 
 
+                                 System.out.println(
 
-	System.out.println("CAMERA DELETED SUCESSFULLY");
+                                            "===================================================================================");
 
+ 
 
+                                 System.out.printf("%-10s %-30s %-20s %-15s %-10s%n", "ID", "CAMERA NAME", "MODEL", "PERDAY RENT",
 
-	} else {
+                                            "STATUS");
 
+ 
 
+                                 System.out.println(
 
-	System.out.println("CAMERA NOT FOUND WITH GIVEN ID");
+                                            "===================================================================================");
 
+ 
 
+                                 for (int i = 0; i < cameraList.size(); i++) {
 
-	}
+ 
 
+                                      Camera camera = cameraList.get(i);
 
+ 
 
-	break;
+                                      String status = camera.isAvailable() ? "AVAILABLE" : "RENTED";
 
+ 
 
+                                      System.out.printf("%-10s %-30s %-20s %-15s %-10s%n", (i + 1), camera.getCameraName(),
 
-	case 3:
+ 
 
+                                                 camera.getModel(), camera.getPerDayPrice() + " INR", status);
 
+ 
 
-	System.out.println("View All Cameras option selected");
+                                 }
 
+ 
 
+                                 break;
 
-	System.out.println("ALL CAMERAS :");
+ 
 
+                           case 4:
 
+ 
 
-	System.out.println(
+                                 menu = 0;
 
-	"===================================================================================");
+ 
 
+                                 break;
 
+ 
 
-	System.out.printf("%-10s %-30s %-20s %-15s %-10s%n", "ID", "CAMERA NAME", "MODEL", "PERDAY RENT",
+                           default:
 
-	"STATUS");
+ 
 
+                                 System.out.println("INVALID OPTION");
 
+ 
 
-	System.out.println(
+                                 break;
 
-	"===================================================================================");
+ 
 
+                           }
 
+ 
 
-	for (int i = 0; i < cameraList.size(); i++) {
+                           break;
 
+ 
 
+                      default:
 
-	Camera camera = cameraList.get(i);
+ 
 
-	String status = camera.isAvailable() ? "AVAILABLE" : "RENTED";
+                           System.out.println("INVALID OPTION");
 
+ 
 
+                           break;
 
-	System.out.printf("%-10s %-30s %-20s %-15s %-10s%n", (i + 1), camera.getCameraName(),
+ 
 
+                      }
 
-	camera.getModel(), camera.getPerDayPrice() + " INR", status);
+                }
 
-	}
+ 
 
+                System.out.println("THANK YOU FOR USING CAMERA RENTAL APP. HAVE A GOOD DAY");
 
+ 
 
-	break;
+           } catch (InputMismatchException e) {
 
-	case 4:
+                // TODO: handle exception'
 
+                System.out.println("INVALID INPUT. PLEASE ENTER A VALID INTEGER CHOICE.");
 
+                sc.nextLine();
 
-	menu = 0;
+           }
 
+           sc.close();
 
+      }
 
-	break;
+ 
 
-	default:
-
-
-
-	System.out.println("INVALID OPTION");
-
-
-
-	break;
-
-	}
-
-	break;
-
-	default:
-
-
-	System.out.println("INVALID OPTION");
-
-	break;
-
-
-	}
-
-	}
-
-	System.out.println("THANK YOU FOR USING CAMERA RENTAL APP. HAVE A GOOD DAY");
-
-	sc.close();
-
-
-
-	}
 }
+
+ 
+
+ 
+
+ 
